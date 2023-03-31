@@ -10,12 +10,6 @@ for FILE in $MODEL/*.java; do
   for FIELD in $(grep -oP '^\s+\w+ \w+;' "$FILE"); do
     echo "$FIELD" | sed 's/;$//' >> "$FILE"
   done
-  #echo "" >> "$FILE"
-  for FIELD in $(grep -oP '^\s+\w+ \w+;' "$FILE"); do
-    FIELD_NAME=$(echo "$FIELD" | cut -d' ' -f2 | cut -d';' -f1)
-    FIELD_TYPE=$(echo "$FIELD" | cut -d' ' -f1)
-    echo "  private $FIELD_TYPE $FIELD_NAME;" >> "$FILE"
-  done
 
   echo "" >> "$FILE"
 
@@ -24,7 +18,7 @@ for FILE in $MODEL/*.java; do
       FIELD_NAME=$(echo "$FIELD" | cut -d'=' -f1)
       FIELD_TYPE=$(echo "$FIELD" | cut -d'=' -f2)
 
-      echo "private $FIELD_TYPE $FIELD_NAME;" >> "$FILE"
+      echo "  private $FIELD_TYPE $FIELD_NAME;" >> "$FILE"
   done
 
   for FIELD in "${FIELDS[@]}"; do
