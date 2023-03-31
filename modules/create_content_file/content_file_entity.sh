@@ -27,13 +27,22 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
   echo "public class ${CLASS_NAME}Entity {" >> "$ENTITY/${CLASS_NAME}Entity.java"
 
   # Gerar atributos da classe
+  echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
   IFS=',' read -ra FIELDS <<< "$CLASS_FIELDS"
   for FIELD in "${FIELDS[@]}"; do
     FIELD_NAME=$(echo "$FIELD" | cut -d'=' -f1)
     FIELD_TYPE=$(echo "$FIELD" | cut -d'=' -f2)
 
-    echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
     echo "  private $FIELD_TYPE $FIELD_NAME;" >> "$ENTITY/${CLASS_NAME}Entity.java"
+  done
+
+  
+  for FIELD in "${FIELDS[@]}"; do
+    FIELD_NAME=$(echo "$FIELD" | cut -d'=' -f1)
+    FIELD_TYPE=$(echo "$FIELD" | cut -d'=' -f2)
+
+    # echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
+    # echo "  private $FIELD_TYPE $FIELD_NAME;" >> "$ENTITY/${CLASS_NAME}Entity.java"
 
     # Gerar método get
     echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
