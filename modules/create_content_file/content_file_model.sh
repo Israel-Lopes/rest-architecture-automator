@@ -21,13 +21,15 @@ for FILE in $MODEL/*.java; do
     FIELD_NAME=$(echo "$FIELD" | cut -d'=' -f1)
     FIELD_TYPE=$(echo "$FIELD" | cut -d'=' -f2)
 
+    echo "private $FIELD_TYPE $FIELD_NAME;" >> "$FILE"
+
     echo "" >> "$FILE"
-    echo "  public $FIELD_TYPE get$FIELD_NAME() {" >> "$FILE"
+    echo "  public $FIELD_TYPE get${FIELD_NAME^}() {" >> "$FILE"
     echo "    return $FIELD_NAME;" >> "$FILE"
     echo "  }" >> "$FILE"
 
     echo "" >> "$FILE"
-    echo "  public void set$FIELD_NAME($FIELD_TYPE $FIELD_NAME) {" >> "$FILE"
+    echo "  public void set${FIELD_NAME^}($FIELD_TYPE $FIELD_NAME) {" >> "$FILE"
     echo "    this.$FIELD_NAME = $FIELD_NAME;" >> "$FILE"
     echo "  }" >> "$FILE"
   done
