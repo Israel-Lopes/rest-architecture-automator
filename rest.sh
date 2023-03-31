@@ -29,3 +29,5 @@ source modules/create_classes.sh
 source modules/create_content_file/content_file_entity.sh
 # Carrega o modulo de implementacao das Models
 source modules/create_content_file/content_file_model.sh
+# Carrega o modulo de implementacao das Repositorys
+source modules/create_content_file/content_file_repository.sh
