@@ -26,8 +26,10 @@ mkdir -p "$MAPPER_TEST"
 # Carrega o modulo de criação das classes
 source modules/create_classes.sh
 # Carrega o modulo de implementacao das Entitys
-source modules/create_content_file/content_file_entity.sh
+source modules/create_content_file/create_content_entity.sh
 # Carrega o modulo de implementacao das Models
-source modules/create_content_file/content_file_model.sh
+source modules/create_content_file/create_content_model.sh
 # Carrega o modulo de implementacao das Repositorys
-source modules/create_content_file/content_file_repository.sh
+source modules/create_content_file/create_content_repository.sh
+# Carrega o modulo de implementacao das Services
+# source modules/create_content_file/content_file_service.sh
