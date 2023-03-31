@@ -23,8 +23,7 @@ mkdir -p "$TOKEN_TEST"
 mkdir -p "$CONTROLLER_TEST"
 mkdir -p "$MAPPER_TEST"
 
-# Carrega o modulo de criação de classes
+# Carrega o modulo de criação das classes
 source modules/create_classes.sh
-
 # Carrega o modulo de implementacao das Entitys
 source modules/create_content_file/content_file_entity.sh

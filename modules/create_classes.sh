@@ -13,20 +13,17 @@ for CLASS in "${DOMAIN_CLASSES[@]}"; do
   touch "$MAIN_PATH/service/model/${CLASS_NAME}Model.java"
   touch "$MAIN_PATH/web/controller/${CLASS_NAME}Controller.java"
   touch "$MAIN_PATH/web/mapper/${CLASS_NAME}Mapper.java"
-
+  # Criar arquivos da classe na pasta correspondente para teste
   touch "$TEST_PATH/persistence/entity/${CLASS_NAME}EntityTest.java"
   touch "$TEST_PATH/repository/${CLASS_NAME}RepositoryTest.java"
   touch "$TEST_PATH/service/model/${CLASS_NAME}ModelTest.java"
   touch "$TEST_PATH/web/controller/${CLASS_NAME}ControllerTest.java"
   touch "$TEST_PATH/web/mapper/${CLASS_NAME}MapperTest.java"
-
 done
 
+# Criar arquivos da classe na pasta correspondente
 touch "$MAIN_PATH/service/token/Token.java"
 touch "$MAIN_PATH/service/cors/Cors.java"
-
+# Criar arquivos da classe na pasta correspondente para teste
 touch "$TEST_PATH/service/cors/CorsTest.java"
 touch "$TEST_PATH/service/token/TokenTest.java"
-
-
-echo "Arquivos criados com sucesso!"
