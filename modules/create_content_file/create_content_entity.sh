@@ -40,9 +40,6 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
     FIELD_NAME=$(echo "$FIELD" | cut -d'=' -f1)
     FIELD_TYPE=$(echo "$FIELD" | cut -d'=' -f2)
 
-    # echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
-    # echo "  private $FIELD_TYPE $FIELD_NAME;" >> "$ENTITY/${CLASS_NAME}Entity.java"
-
     # Gerar método get
     echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
     echo "  public $FIELD_TYPE get${FIELD_NAME^}() {" >> "$ENTITY/${CLASS_NAME}Entity.java"

@@ -1,11 +1,12 @@
 #!/bin/bash
 
-#########################
-##### CONFIGURATION #####
-#########################
+##############################################
+############## PROJECT SETTINGS ##############
+##############################################
 
 # Nome do projeto
 PROJECT_NAME="ArquiteturaHexagonalEcommerce"
+
 # Classes do domínio
 DOMAIN_CLASSES=(
   "Cart:productList=List<Product>,user=User" 

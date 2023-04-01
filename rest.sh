@@ -3,25 +3,21 @@
 # Carregando configuracao inicial do projeto
 source config/config.sh
 
-# Criando diretórios
-mkdir -p "$MAIN_PATH"
-mkdir -p "$TEST_PATH"
-# Pacotes do projeto
-mkdir -p "$ENTITY"
-mkdir -p "$REPOSITORY"
-mkdir -p "$CORS"
-mkdir -p "$MODEL"
-mkdir -p "$TOKEN"
-mkdir -p "$CONTROLLER"
-mkdir -p "$MAPPER"
-# Pacotes do projeto para teste
-mkdir -p "$ENTITY_TEST"
-mkdir -p "$REPOSITORY_TEST"
-mkdir -p "$CORS_TEST"
-mkdir -p "$MODEL_TEST"
-mkdir -p "$TOKEN_TEST"
-mkdir -p "$CONTROLLER_TEST"
-mkdir -p "$MAPPER_TEST"
+# Função para criar diretórios
+create_directory() {
+  mkdir -p "$1"
+  mkdir -p "$2"
+}
+
+# Criação de diretórios
+create_directory "$MAIN_PATH" "$TEST_PATH"
+create_directory "$ENTITY" "$ENTITY_TEST"
+create_directory "$REPOSITORY" "$REPOSITORY_TEST"
+create_directory "$CORS" "$CORS_TEST"
+create_directory "$MODEL" "$MODEL_TEST"
+create_directory "$TOKEN" "$TOKEN_TEST"
+create_directory "$CONTROLLER" "$CONTROLLER_TEST"
+create_directory "$MAPPER" "$MAPPER_TEST"
 
 # Carrega o modulo de criação das classes
 source modules/create_classes.sh
@@ -31,5 +27,5 @@ source modules/create_content_file/create_content_entity.sh
 source modules/create_content_file/create_content_model.sh
 # Carrega o modulo de implementacao das Repositorys
 source modules/create_content_file/create_content_repository.sh
-# Carrega o modulo de implementacao das Services
-# source modules/create_content_file/content_file_service.sh
+# Carrega o modulo de implementacao das Controllers
+source modules/create_content_file/create_content_controller.sh

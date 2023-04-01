@@ -5,7 +5,6 @@ for FILE in $MODEL/*.java; do
   FILE_NAME=$(basename "$FILE" .java)
   echo "Implementando classe $FILE_NAME"
   sed -i 's/}$//g' "$FILE"
-  #echo "" >> "$FILE"
   echo "public class $FILE_NAME {" >> "$FILE"
   for FIELD in $(grep -oP '^\s+\w+ \w+;' "$FILE"); do
     echo "$FIELD" | sed 's/;$//' >> "$FILE"
@@ -32,6 +31,7 @@ for FILE in $MODEL/*.java; do
     echo "  }" >> "$FILE"
 
     echo "" >> "$FILE"
+    
     # Gerar método set
     echo "  public void set${FIELD_NAME^}($FIELD_TYPE $FIELD_NAME) {" >> "$FILE"
     echo "    this.$FIELD_NAME = $FIELD_NAME;" >> "$FILE"
