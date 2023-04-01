@@ -8,71 +8,69 @@ fi
 
 # Gera as implementações das classes mappers
 for MAPPER_FILE in $MAPPER/*Mapper.java; do
-  mapper_name=$(basename "$MAPPER_FILE" .java)
-  model_name="${mapper_name%Mapper}"
-  entity_name="${model_name}Entity"
+  MAPPER_NAME=$(basename "$MAPPER_FILE" .java)
+  MODEL_NAME="${MAPPER_NAME%Mapper}"
+  ENTITY_NAME="${MODEL_NAME}Entity"
   
   # Escreve o conteúdo no arquivo do mapper
   echo "package $MAIN_PATH.web.mapper;" > "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
-  echo "import $MAIN_PATH.percistence.entity.$entity_name;" >> "$MAPPER_FILE"
-  echo "import $MAIN_PATH.service.model.$model_name;" >> "$MAPPER_FILE"
+  echo "import $MAIN_PATH.percistence.entity.$ENTITY_NAME;" >> "$MAPPER_FILE"
+  echo "import $MAIN_PATH.service.model.$MODEL_NAME;" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
   echo "import java.util.List;" >> "$MAPPER_FILE"
   echo "import java.util.stream.Collectors;" >> "$MAPPER_FILE"
   
   echo "" >> "$MAPPER_FILE"
 
-  echo "public class $mapper_name {" >> "$MAPPER_FILE"
+  echo "public class $MAPPER_NAME {" >> "$MAPPER_FILE"
 
   echo "" >> "$MAPPER_FILE"
-  echo "    private $mapper_name() { super(); }" >> "$MAPPER_FILE"
+  echo "    private $MAPPER_NAME() { super(); }" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
 
-  echo "    public static List<$entity_name> marshall(List<$model_name> models) {" >> "$MAPPER_FILE"
+  echo "    public static List<$ENTITY_NAME> marshall(List<$MODEL_NAME> models) {" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
-  echo "        return models.stream().map($mapper_name::marshall).collect(Collectors.toList());" >> "$MAPPER_FILE"
+  echo "        return models.stream().map($MAPPER_NAME::marshall).collect(Collectors.toList());" >> "$MAPPER_FILE"
+  echo "    }" >> "$MAPPER_FILE"
+  echo "" >> "$MAPPER_FILE"
+
+  echo "    public static List<$MODEL_NAME> unmarshall(List<$ENTITY_NAME> entities) {" >> "$MAPPER_FILE"
+  echo "        return entities.stream().map($MAPPER_NAME::unmarshall).collect(Collectors.toList());" >> "$MAPPER_FILE"
   echo "    }" >> "$MAPPER_FILE"
 
   echo "" >> "$MAPPER_FILE"
-
-  echo "    public static List<$model_name> unmarshall(List<$entity_name> entities) {" >> "$MAPPER_FILE"
-  echo "        return entities.stream().map($mapper_name::unmarshall).collect(Collectors.toList());" >> "$MAPPER_FILE"
-  echo "    }" >> "$MAPPER_FILE"
-
-  echo "" >> "$MAPPER_FILE"
-  echo "    public static $entity_name marshall($model_name model) {" >> "$MAPPER_FILE"
-  echo "        return $entity_name.builder()" >> "$MAPPER_FILE"
+  echo "    public static $ENTITY_NAME marshall($MODEL_NAME model) {" >> "$MAPPER_FILE"
+  echo "        return $ENTITY_NAME.builder()" >> "$MAPPER_FILE"
 
   # Escreve as propriedades do model no builder do entity
-  for model_prop in $(compgen -v "$model_name"_PROP_); do
-    entity_prop="${model_prop%_PROP_}"
-    entity_prop_name="${entity_prop}Id"
-    model_prop_value="${!model_prop}"
-    if [ "$entity_prop_name" = "cartId" ]; then
-      entity_prop_name="id"
+  for MODEL_PROP in $(compgen -v "$MODEL_NAME"_PROP_); do
+    ENTITY_PROP="${model_prop%_PROP_}"
+    ENTITY_PROP_NAME="${ENTITY_PROP}Id"
+    MODEL_PROP_VALUE="${!MODEL_PROP}"
+    if [ "$ENTITY_PROP_NAME" = "cartId" ]; then
+      ENTITY_PROP_NAME="id"
     fi
-    echo "                .$entity_prop_name(model.$model_prop_value())" >> "$MAPPER_FILE"
+    echo "                .$ENTITY_PROP_NAME(model.$MODEL_PROP_VALUE())" >> "$MAPPER_FILE"
   done
 
   echo "                .build();" >> "$MAPPER_FILE"
   echo "    }" >> "$MAPPER_FILE"
-
   echo "" >> "$MAPPER_FILE"
 
-  echo "    public static $model_name unmarshall($entity_name entity) {" >> "$MAPPER_FILE"
-  echo "        return $model_name.builder()" >> "$MAPPER_FILE"
+  echo "    public static $MODEL_NAME unmarshall($ENTITY_NAME entity) {" >> "$MAPPER_FILE"
+  echo "        return $MODEL_NAME.builder()" >> "$MAPPER_FILE"
 
  # Escreve as propriedades do entity no builder do model
-  for entity_prop in $(compgen -v "$entity_name"_PROP_); do
-    model_prop="${entity_prop%_PROP_}"
-    entity_prop_value="${!entity_prop}"
-    if [ "$entity_prop" = "id_PROP_" ]; then
-      model_prop_name="cartId"
+  for ENTITY_PROP in $(compgen -v "$ENTITY_NAME"_PROP_); do
+    MODEL_PROP="${ENTITY_PROP%_PROP_}"
+    ENTITY_PROP_value="${!ENTITY_PROP}"
+    if [ "$ENTITY_PROP" = "id_PROP_" ]; then
+      MODEL_PROP_NAME="cartId"
     else
-      model_prop_name="${model_prop}Id"
+      MODEL_PROP_NAME="${MODEL_PROP}Id"
     fi
-    echo "                .$model_prop_name($entity_prop_value)" >> "$MAPPER_FILE"
+    echo "                .$MODEL_PROP_NAME($ENTITY_PROP_VALUE)" >> "$MAPPER_FILE"
   done
 
   echo "                .build();" >> "$MAPPER_FILE"
