@@ -1,23 +1,23 @@
 #!/bin/bash
 
+# IMPORTS
+source utils/painel.sh
+source utils/mk.sh
 # Carregando configuracao inicial do projeto
 source config/config.sh
 
-# Função para criar diretórios
-create_directory() {
-  mkdir -p "$1"
-  mkdir -p "$2"
-}
+# Titulo do programa
+_print_painel
 
 # Criação de diretórios
-create_directory "$MAIN_PATH" "$TEST_PATH"
-create_directory "$ENTITY" "$ENTITY_TEST"
-create_directory "$REPOSITORY" "$REPOSITORY_TEST"
-create_directory "$CORS" "$CORS_TEST"
-create_directory "$MODEL" "$MODEL_TEST"
-create_directory "$TOKEN" "$TOKEN_TEST"
-create_directory "$CONTROLLER" "$CONTROLLER_TEST"
-create_directory "$MAPPER" "$MAPPER_TEST"
+_create_directory "$MAIN_PATH" "$TEST_PATH"
+_create_directory "$ENTITY" "$ENTITY_TEST"
+_create_directory "$REPOSITORY" "$REPOSITORY_TEST"
+_create_directory "$CORS" "$CORS_TEST"
+_create_directory "$MODEL" "$MODEL_TEST"
+_create_directory "$TOKEN" "$TOKEN_TEST"
+_create_directory "$CONTROLLER" "$CONTROLLER_TEST"
+_create_directory "$MAPPER" "$MAPPER_TEST"
 
 # Carrega o modulo de criação das classes
 source modules/create_classes.sh
@@ -31,3 +31,5 @@ source modules/create_content_file/create_content_repository.sh
 source modules/create_content_file/create_content_controller.sh
 # Carrega o modulo de implementacao das Mappers
 source modules/create_content_file/create_content_mapper.sh
+# Carrega o modulo de implementacao da Man
+source modules/create_content_file/create_content_man.sh

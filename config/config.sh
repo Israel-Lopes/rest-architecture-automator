@@ -20,6 +20,8 @@ DOMAIN_CLASSES=(
 BORD="./$PROJECT_NAME"
 MAIN_PATH="$BORD/main/java/com/$PROJECT_NAME/app"
 TEST_PATH="$BORD/test/java/com/$PROJECT_NAME/app"
+CLASS_MAN_PATH="${MAIN_PATH}/${PROJECT_NAME}Application.java"
+echo "TESTE: ${CLASS_MAN_PATH}"
 # Pacotes do projeto
 ENTITY="$MAIN_PATH/persistence/entity"
 REPOSITORY="$MAIN_PATH/repository"
