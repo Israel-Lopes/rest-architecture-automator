@@ -29,3 +29,5 @@ source modules/create_content_file/create_content_model.sh
 source modules/create_content_file/create_content_repository.sh
 # Carrega o modulo de implementacao das Controllers
 source modules/create_content_file/create_content_controller.sh
+# Carrega o modulo de implementacao das Mappers
+source modules/create_content_file/create_content_mapper.sh
