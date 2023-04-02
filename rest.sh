@@ -35,3 +35,7 @@ source modules/create_content_file/create_content_mapper.sh
 source modules/create_content_file/create_content_man.sh
 # Carrega o modulo de implementacao do pom.xml
 source modules/create_content_file/create_content_pom_xml.sh
+# Carrega o modulo de implementacao do mvnw
+source modules/create_content_file/create_content_mvnw.sh
+# Carrega o modulo de implementacao do mvnw.cmd
+source modules/create_content_file/create_content_mvnw_cmd.sh

@@ -23,6 +23,11 @@ done
 
 # Cria pom.xml
 touch "$BORD/pom.xml"
+# Cria mvnw
+touch "$BORD/mvnw"
+# Cria mvnw.cmd
+touch "$BORD/mvnw.cmd"
+
 # Cria a classe principal Man
 touch "$CLASS_MAN_PATH"
 # Criar arquivos da classe na pasta correspondente
