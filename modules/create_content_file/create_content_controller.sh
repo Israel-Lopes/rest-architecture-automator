@@ -16,7 +16,7 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
   echo "import com.$PROJECT_NAME.app.service.${CLASS_NAME}Service;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "@RestController" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
-  echo "@RequestMapping(\"/${CLASS_NAME}\")" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
+  echo "@RequestMapping(\"/${CLASS_NAME,}\")" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "public class ${CLASS_NAME}Controller {" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "  @Autowired" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
