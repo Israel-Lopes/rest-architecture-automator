@@ -21,6 +21,8 @@ for CLASS in "${DOMAIN_CLASSES[@]}"; do
   touch "$TEST_PATH/web/mapper/${CLASS_NAME}MapperTest.java"
 done
 
+# Cria pom.xml
+touch "$BORD/pom.xml"
 # Cria a classe principal Man
 touch "$CLASS_MAN_PATH"
 # Criar arquivos da classe na pasta correspondente

@@ -16,6 +16,9 @@ DOMAIN_CLASSES=(
   "User:name=String,email=String,password=String"
 )
 
+# Descricao do projeto
+DESCRIPTION=""
+
 # Diretórios do projeto
 BORD="./$PROJECT_NAME/src"
 MAIN_PATH="$BORD/main/java/com/$PROJECT_NAME/app"

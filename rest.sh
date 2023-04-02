@@ -33,3 +33,5 @@ source modules/create_content_file/create_content_controller.sh
 source modules/create_content_file/create_content_mapper.sh
 # Carrega o modulo de implementacao da Man
 source modules/create_content_file/create_content_man.sh
+# Carrega o modulo de implementacao do pom.xml
+source modules/create_content_file/create_content_pom_xml.sh
