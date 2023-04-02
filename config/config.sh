@@ -17,7 +17,7 @@ DOMAIN_CLASSES=(
 )
 
 # Diretórios do projeto
-BORD="./$PROJECT_NAME"
+BORD="./$PROJECT_NAME/src"
 MAIN_PATH="$BORD/main/java/com/$PROJECT_NAME/app"
 TEST_PATH="$BORD/test/java/com/$PROJECT_NAME/app"
 CLASS_MAN_PATH="${MAIN_PATH}/${PROJECT_NAME}Application.java"
