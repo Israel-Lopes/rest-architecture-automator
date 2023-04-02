@@ -138,4 +138,4 @@ echo -e "<?xml version="1.0" encoding="UTF-8"?>
 		</plugins>
 	</build>
 
-</project>" >> "$BORD/pom.xml"
+</project>" >> "./$PROJECT_NAME/pom.xml"
