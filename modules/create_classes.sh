@@ -22,11 +22,11 @@ for CLASS in "${DOMAIN_CLASSES[@]}"; do
 done
 
 # Cria pom.xml
-touch "$BORD/pom.xml"
+touch "./$PROJECT_NAME/pom.xml"
 # Cria mvnw
-touch "$BORD/mvnw"
+touch "./$PROJECT_NAME/mvnw"
 # Cria mvnw.cmd
-touch "$BORD/mvnw.cmd"
+touch "./$PROJECT_NAME/mvnw.cmd"
 
 # Cria a classe principal Man
 touch "$CLASS_MAN_PATH"
