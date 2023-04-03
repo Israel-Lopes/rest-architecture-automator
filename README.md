@@ -2,91 +2,46 @@
 
 Arvore de exemplo da estrutura
 
+
+- `main`: diretório principal do projeto.
+- `java`: diretório para o código fonte em Java.
+- `com`: diretório raiz dos pacotes Java.
+- `AppExample`: nome da aplicação.
+- `app`: pacote da aplicação.
+- `persistence`: pacote que contém as entidades do banco de dados.
+- `entity`: pacote que contém as classes que representam as tabelas do banco de dados.
+- `repository`: pacote que contém as classes que implementam as interfaces dos repositórios.
+- `service`: pacote que contém as classes de serviços da aplicação.
+- `cors`: pacote que contém as classes responsáveis por configurar o Cross-Origin Resource Sharing (CORS).
+- `model`: pacote que contém as classes de modelo da aplicação.
+- `token`: pacote que contém as classes responsáveis por gerar e validar tokens de autenticação.
+- `web`: pacote que contém as classes responsáveis pela comunicação web.
+- `controller`: pacote que contém as classes controladoras da aplicação.
+- `mapper`: pacote que contém as classes que realizam a conversão de objetos entre as camadas da aplicação.
+
+Esta é a estrutura do projeto default e cada diretório possui sua respectiva descrição.
+
 ```
 .
 ├── main
 │   └── java
 │       └── com
-│           └── ArquiteturaHexagonalEcommerce
+│           └── AppExample
 │               └── app
 │                   ├── persistence
 │                   │   └── entity
-│                   │       ├── CartEntity.java
-│                   │       ├── LoginEntity.java
-│                   │       ├── ProductEntity.java
-│                   │       ├── RegistrationEntity.java
-│                   │       └── UserEntity.java
+│                   │
 │                   ├── repository
-│                   │   ├── CartRepository.java
-│                   │   ├── LoginRepository.java
-│                   │   ├── ProductRepository.java
-│                   │   ├── RegistrationRepository.java
-│                   │   └── UserRepository.java
+│                   │
 │                   ├── service
 │                   │   ├── cors
-│                   │   │   └── Cors.java
+│                   │   │
 │                   │   ├── model
-│                   │   │   ├── CartModel.java
-│                   │   │   ├── LoginModel.java
-│                   │   │   ├── ProductModel.java
-│                   │   │   ├── RegistrationModel.java
-│                   │   │   └── UserModel.java
+│                   │   │
 │                   │   └── token
-│                   │       └── Token.java
+│                   │       
 │                   └── web
 │                       ├── controller
-│                       │   ├── CartController.java
-│                       │   ├── LoginController.java
-│                       │   ├── ProductController.java
-│                       │   ├── RegistrationController.java
-│                       │   └── UserController.java
+│                       │
 │                       └── mapper
-│                           ├── CartMapper.java
-│                           ├── LoginMapper.java
-│                           ├── ProductMapper.java
-│                           ├── RegistrationMapper.java
-│                           └── UserMapper.java
-└── test
-    └── java
-        └── com
-            └── ArquiteturaHexagonalEcommerce
-                └── app
-                    ├── persistence
-                    │   └── entity
-                    │       ├── CartEntityTest.java
-                    │       ├── LoginEntityTest.java
-                    │       ├── ProductEntityTest.java
-                    │       ├── RegistrationEntityTest.java
-                    │       └── UserEntityTest.java
-                    ├── repository
-                    │   ├── CartRepositoryTest.java
-                    │   ├── LoginRepositoryTest.java
-                    │   ├── ProductRepositoryTest.java
-                    │   ├── RegistrationRepositoryTest.java
-                    │   └── UserRepositoryTest.java
-                    ├── service
-                    │   ├── cors
-                    │   │   └── CorsTest.java
-                    │   ├── model
-                    │   │   ├── CartModelTest.java
-                    │   │   ├── LoginModelTest.java
-                    │   │   ├── ProductModelTest.java
-                    │   │   ├── RegistrationModelTest.java
-                    │   │   └── UserModelTest.java
-                    │   └── token
-                    │       └── TokenTest.java
-                    └── web
-                        ├── controller
-                        │   ├── CartControllerTest.java
-                        │   ├── LoginControllerTest.java
-                        │   ├── ProductControllerTest.java
-                        │   ├── RegistrationControllerTest.java
-                        │   └── UserControllerTest.java
-                        └── mapper
-                            ├── CartMapperTest.java
-                            ├── LoginMapperTest.java
-                            ├── ProductMapperTest.java
-                            ├── RegistrationMapperTest.java
-                            └── UserMapperTest.java
-
 ```
