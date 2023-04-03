@@ -18,6 +18,7 @@ _create_directory "$MODEL" "$MODEL_TEST"
 _create_directory "$TOKEN" "$TOKEN_TEST"
 _create_directory "$CONTROLLER" "$CONTROLLER_TEST"
 _create_directory "$MAPPER" "$MAPPER_TEST"
+_create_directory "$MVN_WRAPPER"
 
 # Carrega o modulo de criação das classes
 source modules/create_classes.sh
@@ -39,3 +40,6 @@ source modules/create_content_file/create_content_pom_xml.sh
 source modules/create_content_file/create_content_mvnw.sh
 # Carrega o modulo de implementacao do mvnw.cmd
 source modules/create_content_file/create_content_mvnw_cmd.sh
+
+cp modules/static_files/wrapper/maven-wrapper.jar $MVN_WRAPPER
+cp modules/static_files/wrapper/maven-wrapper.properties $MVN_WRAPPER

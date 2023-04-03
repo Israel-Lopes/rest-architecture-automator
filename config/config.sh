@@ -25,6 +25,7 @@ MAIN_PATH="$BORD/main/java/com/$PROJECT_NAME/app"
 TEST_PATH="$BORD/test/java/com/$PROJECT_NAME/app"
 CLASS_MAN_PATH="${MAIN_PATH}/${PROJECT_NAME}Application.java"
 PACKAGE_NAME="com.$PROJECT_NAME.app"
+MVN_WRAPPER="$BORD/.mvn/wrapper"
 # Pacotes do projeto
 ENTITY="$MAIN_PATH/persistence/entity"
 REPOSITORY="$MAIN_PATH/repository"

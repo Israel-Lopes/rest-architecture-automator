@@ -316,5 +316,5 @@ echo '  $MAVEN_OPTS \' >> ./$PROJECT_NAME/mvnw
 echo '  $MAVEN_DEBUG_OPTS \' >> ./$PROJECT_NAME/mvnw
 echo '  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \' >> ./$PROJECT_NAME/mvnw
 echo '  "-Dmaven.home=${M2_HOME}" \' >> ./$PROJECT_NAME/mvnw
-echo '  "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \'
-echo '  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"' >> ./$PROJECT_NAME/mvnw'
+echo '  "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \' >> ./$PROJECT_NAME/mvnw
+echo '  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"' >> ./$PROJECT_NAME/mvnw

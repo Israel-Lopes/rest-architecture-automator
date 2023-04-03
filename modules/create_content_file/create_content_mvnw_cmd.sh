@@ -26,9 +26,9 @@ echo '@REM Required ENV vars:' >> ./$PROJECT_NAME/mvnw.cmd
 echo '@REM JAVA_HOME - location of a JDK home dir' >> ./$PROJECT_NAME/mvnw.cmd
 echo '@REM' >> ./$PROJECT_NAME/mvnw.cmd
 echo '@REM Optional ENV vars' >> ./$PROJECT_NAME/mvnw.cmd
-echo '@REM M2_HOME - location of maven2's installed home dir' >> ./$PROJECT_NAME/mvnw.cmd
-echo '@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands' >> ./$PROJECT_NAME/mvnw.cmd
-echo 'echo '@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending' >> ./$PROJECT_NAME/mvnw.cmd
+echo '@REM M2_HOME - location of maven2s installed home dir' >> ./$PROJECT_NAME/mvnw.cmd
+echo '@REM MAVEN_BATCH_ECHO - set to on to enable the echoing of the batch commands' >> ./$PROJECT_NAME/mvnw.cmd
+echo 'echo @REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending' >> ./$PROJECT_NAME/mvnw.cmd
 echo '@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven' >> ./$PROJECT_NAME/mvnw.cmd
 echo '@REM     e.g. to debug Maven itself, use' >> ./$PROJECT_NAME/mvnw.cmd
 echo '@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000' >> ./$PROJECT_NAME/mvnw.cmd
@@ -143,13 +143,13 @@ echo "        echo Couldn't find %WRAPPER_JAR%, downloading it ..." >> ./$PROJEC
 echo '        echo Downloading from: %DOWNLOAD_URL%' >> ./$PROJECT_NAME/mvnw.cmd
 echo '    )' >> ./$PROJECT_NAME/mvnw.cmd
 echo '' >> ./$PROJECT_NAME/mvnw.cmd
-echo '    powershell -Command "&{"\^' >> ./$PROJECT_NAME/mvnw.cmd
-echo '		"$webclient = new-object System.Net.WebClient;"^' >> ./$PROJECT_NAME/mvnw.cmd
-echo '		"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^' >> ./$PROJECT_NAME/mvnw.cmd
-echo '		"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^' >> ./$PROJECT_NAME/mvnw.cmd
-echo '		"}"^' >> ./$PROJECT_NAME/mvnw.cmd
-echo '		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')"^' >> ./$PROJECT_NAME/mvnw.cmd
-echo '		"}"' >> ./$PROJECT_NAME/mvnw.cmd
+echo '    powershell -Command "&{' >> ./$PROJECT_NAME/mvnw.cmd
+echo '        $webclient = new-object System.Net.WebClient;' >> ./$PROJECT_NAME/mvnw.cmd
+echo '        if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {' >> ./$PROJECT_NAME/mvnw.cmd
+echo '            $webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');' >> ./$PROJECT_NAME/mvnw.cmd
+echo '        }' >> ./$PROJECT_NAME/mvnw.cmd
+echo '        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')' >> ./$PROJECT_NAME/mvnw.cmd
+echo '    }"' >> ./$PROJECT_NAME/mvnw.cmd
 echo '    if "%MVNW_VERBOSE%" == "true" (' >> ./$PROJECT_NAME/mvnw.cmd
 echo '        echo Finished downloading %WRAPPER_JAR%' >> ./$PROJECT_NAME/mvnw.cmd
 echo '    )' >> ./$PROJECT_NAME/mvnw.cmd
@@ -187,4 +187,4 @@ echo 'if "%MAVEN_BATCH_PAUSE%"=="on" pause' >> ./$PROJECT_NAME/mvnw.cmd
 echo '' >> ./$PROJECT_NAME/mvnw.cmd
 echo 'if "%MAVEN_TERMINATE_CMD%"=="on" exit %ERROR_CODE%' >> ./$PROJECT_NAME/mvnw.cmd
 echo '' >> ./$PROJECT_NAME/mvnw.cmd
-echo 'cmd /C exit /B %ERROR_CODE%"' >> ./$PROJECT_NAME/mvnw.cmd
+echo 'cmd /C exit /B %ERROR_CODE%' >> ./$PROJECT_NAME/mvnw.cmd
