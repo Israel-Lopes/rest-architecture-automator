@@ -41,5 +41,6 @@ source modules/create_content_file/create_content_mvnw.sh
 # Carrega o modulo de implementacao do mvnw.cmd
 source modules/create_content_file/create_content_mvnw_cmd.sh
 
-cp modules/static_files/wrapper/maven-wrapper.jar $MVN_WRAPPER
-cp modules/static_files/wrapper/maven-wrapper.properties $MVN_WRAPPER
+cp modules/static_files/wrapper/maven-wrapper.jar $MVN_WRAPPER/maven-wrapper.jar
+cp modules/static_files/wrapper/maven-wrapper.properties $MVN_WRAPPER/maven-wrapper.properties
+rm -rf '(.*)`'
