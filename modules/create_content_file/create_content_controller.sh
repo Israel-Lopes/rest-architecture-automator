@@ -6,14 +6,14 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
 
   # Gerar classe de controller
   echo "Gerando classe de controller: $CONTROLLER/${CLASS_NAME}Controller.java"
-  echo "package com.$PROJECT_NAME.app.controller;" > "$CONTROLLER/${CLASS_NAME}Controller.java"
+  echo "package com.$PROJECT_NAME.app.controller;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "import org.springframework.beans.factory.annotation.Autowired;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "import org.springframework.http.HttpStatus;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "import org.springframework.http.ResponseEntity;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "import org.springframework.web.bind.annotation.*;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
-  echo "import com.$PROJECT_NAME.app.persistence.entity.${CLASS_NAME}Entity;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
-  echo "import com.$PROJECT_NAME.app.service.${CLASS_NAME}Service;" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
+  echo "import com.$PROJECT_NAME.app.persistence.entity.${CLASS_NAME}Entity;" | sed 's/\//./g' >> "$CONTROLLER/${CLASS_NAME}Controller.java"
+  echo "import com.$PROJECT_NAME.app.service.${CLASS_NAME}Service;" | sed 's/\//./g' >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "@RestController" >> "$CONTROLLER/${CLASS_NAME}Controller.java"
   echo "@RequestMapping(\"/${CLASS_NAME,}\")" >> "$CONTROLLER/${CLASS_NAME}Controller.java"

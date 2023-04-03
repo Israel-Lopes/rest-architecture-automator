@@ -37,22 +37,22 @@ for FILE in $MODEL/*.java; do
     echo "    this.$FIELD_NAME = $FIELD_NAME;" >> "$FILE"
     echo "  }" >> "$FILE"
   done
-  echo "" >> "$FILE"
-  echo "  @Override" >> "$FILE"
-  echo "  public boolean equals(Object o) {" >> "$FILE"
-  echo "    if (this == o) return true;" >> "$FILE"
-  echo "    if (o == null || getClass() != o.getClass()) return false;" >> "$FILE"
-  echo "" >> "$FILE"
-  echo "    $FILE_NAME $FILE_NAME = ($FILE_NAME) o;" >> "$FILE"
-  echo "" >> "$FILE"
-  echo "    // Implemente a comparação dos atributos da classe aqui" >> "$FILE"
-  for FIELD in $(grep -oP '^\s+\w+ \w+;' "$FILE"); do
-    FIELD_NAME=$(echo "$FIELD" | cut -d' ' -f2 | cut -d';' -f1)
-    echo "    if (!Objects.equals($FIELD_NAME, $FILE_NAME.get$FIELD_NAME())) return false;" >> "$FILE"
-  done
-  echo "" >> "$FILE"
-  echo "    return true;" >> "$FILE"
-  echo "  }" >> "$FILE"
+  # echo "" >> "$FILE"
+  # echo "  @Override" >> "$FILE"
+  # echo "  public boolean equals(Object o) {" >> "$FILE"
+  # echo "    if (this == o) return true;" >> "$FILE"
+  # echo "    if (o == null || getClass() != o.getClass()) return false;" >> "$FILE"
+  # echo "" >> "$FILE"
+  # echo "    $FILE_NAME $FILE_NAME = ($FILE_NAME) o;" >> "$FILE"
+  # echo "" >> "$FILE"
+  # echo "    // Implemente a comparação dos atributos da classe aqui" >> "$FILE"
+  # for FIELD in $(grep -oP '^\s+\w+ \w+;' "$FILE"); do
+  #   FIELD_NAME=$(echo "$FIELD" | cut -d' ' -f2 | cut -d';' -f1)
+  #   echo "    if (!Objects.equals($FIELD_NAME, $FILE_NAME.get$FIELD_NAME())) return false;" >> "$FILE"
+  # done
+  # echo "" >> "$FILE"
+  # echo "    return true;" >> "$FILE"
+  # echo "  }" >> "$FILE"
   echo "}" >> "$FILE"
   echo "" >> "$FILE"
 done

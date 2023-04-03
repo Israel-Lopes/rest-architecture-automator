@@ -13,10 +13,10 @@ for MAPPER_FILE in $MAPPER/*Mapper.java; do
   ENTITY_NAME="${MODEL_NAME}Entity"
   
   # Escreve o conteúdo no arquivo do mapper
-  echo "package $MAIN_PATH.web.mapper;" > "$MAPPER_FILE"
+  echo "package com.$PROJECT_NAME.web.mapper;" | sed 's/\//./g' >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
-  echo "import $MAIN_PATH.percistence.entity.$ENTITY_NAME;" >> "$MAPPER_FILE"
-  echo "import $MAIN_PATH.service.model.$MODEL_NAME;" >> "$MAPPER_FILE"
+  echo "import com.$PROJECT_NAME.percistence.entity.$ENTITY_NAME;" | sed 's/\//./g' >> "$MAPPER_FILE"
+  echo "import com.$PROJECT_NAME.service.model.$MODEL_NAME;" | sed 's/\//./g' >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
   echo "import java.util.List;" >> "$MAPPER_FILE"
   echo "import java.util.stream.Collectors;" >> "$MAPPER_FILE"
