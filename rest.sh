@@ -32,6 +32,8 @@ source modules/create_content_file/create_content_repository.sh
 source modules/create_content_file/create_content_controller.sh
 # Carrega o modulo de implementacao das Mappers
 source modules/create_content_file/create_content_mapper.sh
+# Carrega o modulo de implementacao das Services
+source modules/create_content_file/create_content_service.sh
 # Carrega o modulo de implementacao da Man
 source modules/create_content_file/create_content_man.sh
 # Carrega o modulo de implementacao do pom.xml
@@ -41,6 +43,7 @@ source modules/create_content_file/create_content_mvnw.sh
 # Carrega o modulo de implementacao do mvnw.cmd
 source modules/create_content_file/create_content_mvnw_cmd.sh
 
+# Copia os arquivos estaticos no maven
 cp modules/static_files/wrapper/maven-wrapper.jar $MVN_WRAPPER/maven-wrapper.jar
 cp modules/static_files/wrapper/maven-wrapper.properties $MVN_WRAPPER/maven-wrapper.properties
 rm -rf '(.*)`'

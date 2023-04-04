@@ -1,8 +1,5 @@
 # rest-architecture-automator
 
-Arvore de exemplo da estrutura
-
-
 - `main`: diretório principal do projeto.
 - `java`: diretório para o código fonte em Java.
 - `com`: diretório raiz dos pacotes Java.
