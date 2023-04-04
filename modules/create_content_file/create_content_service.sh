@@ -17,6 +17,16 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   echo "package com.$PROJECT_NAME.app.service;" > "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import com.$PROJECT_NAME.persistence.entity.${CLASS_NAME}Entity;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import com.$PROJECT_NAME.app.percistence.entity.${CLASS_NAME}Entity;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import com.$PROJECT_NAME.app.repository.${CLASS_NAME}Repository;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import com.$PROJECT_NAME.web.mapper.${CLASS_NAME}Mapper;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import org.springframework.beans.factory.annotation.Autowired;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import org.springframework.http.HttpStatus;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import org.springframework.http.ResponseEntity;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import org.springframework.stereotype.Service;" >> "$SERVICE_PATH/$FILE_NAME"
+
+  echo "" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import javax.servlet.http.HttpServletRequest;"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
   echo "@Service" >> "$SERVICE_PATH/$FILE_NAME"
   echo "public class ${CLASS_NAME}Service {" >> "$SERVICE_PATH/$FILE_NAME"
@@ -28,7 +38,7 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   echo "    public ResponseEntity get${CLASS_NAME}(HttpServletRequest request, Long id) {
         try {
             // Exemplo de implementacao
-            ProductEntity ${CLASS_NAME,}Entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(id);
+            ${CLASS_NAME}Entity ${CLASS_NAME,}Entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(id);
             // Implementacao aqui
             return ${CLASS_NAME,}Entity != null
                     ? ResponseEntity.ok().body(${CLASS_NAME}Mapper.unmarshall(${CLASS_NAME,}Entity))
@@ -39,7 +49,7 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
 
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
-    echo "  public ResponseEntity<List<${CLASS_NAME}>> get${CLASS_NAME}List(HttpServletRequest request) {
+    echo "  public ResponseEntity<List<${CLASS_NAME}Model>> get${CLASS_NAME}List(HttpServletRequest request) {
             try {
                 List<${CLASS_NAME}Entity> entities = ${CLASS_NAME,}Repository.findAll();
                 // Implementacao aqui
@@ -51,25 +61,25 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
             }
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
-    echo "  public ResponseEntity create(${CLASS_NAME} model) {
+    echo "  public ResponseEntity create(${CLASS_NAME}Model model) {
             try {
                 ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.save(${CLASS_NAME}Mapper.marshall(model));
                 // Implementacao aqui
                 return entity != null
-                        ? ResponseEntity.ok().header("Content-Type", "application/json").body(${CLASS_NAME}Mapper.unmarshall(entity))
+                        ? ResponseEntity.ok().header(\"Content-Type\", \"application/json\").body(${CLASS_NAME}Mapper.unmarshall(entity))
                         : ResponseEntity.notFound().build();
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
-    echo "  public ResponseEntity update(${CLASS_NAME} model) {
+    echo "  public ResponseEntity update(${CLASS_NAME}Model model) {
             try {
                 ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(model.get${CLASS_NAME}Id());
                 // Implementacao aqui
                 ${CLASS_NAME,}Repository.save(entity);
                 return entity != null
-                        ? ResponseEntity.ok().header("Content-Type", "application/json").body(${CLASS_NAME}Mapper.unmarshall(entity))
+                        ? ResponseEntity.ok().header(\"Content-Type\", \"application/json\").body(${CLASS_NAME}Mapper.unmarshall(entity))
                         : ResponseEntity.notFound().build();
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -81,7 +91,7 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
                 ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(id);
                 return ${CLASS_NAME,}Repository.findById(id).map(record -> {
                     ${CLASS_NAME,}Repository.deleteById(id);
-                    return ResponseEntity.ok().header("Content-Type", "application/json").body(id);
+                    return ResponseEntity.ok().header(\"Content-Type\", \"application/json\").body(id);
                 }).orElse(ResponseEntity.notFound().build());
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

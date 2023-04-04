@@ -24,7 +24,7 @@ import java.util.List;
 public class ${CLASS_NAME}Controller {
 
     @Autowired(required=true)
-    private ProductService service;
+    private ${CLASS_NAME}Service service;
 
     @GetMapping(\"/{id}\")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -33,17 +33,17 @@ public class ${CLASS_NAME}Controller {
     }
     @GetMapping()
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<List<${CLASS_NAME}>> get${CLASS_NAME}List(HttpServletRequest request) throws Exception {
+    public ResponseEntity<List<${CLASS_NAME}Model>> get${CLASS_NAME}List(HttpServletRequest request) throws Exception {
         return service.get${CLASS_NAME}List(request);
     }
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity create(@RequestBody ${CLASS_NAME} model) throws Exception {
+    public ResponseEntity create(@RequestBody ${CLASS_NAME}Model model) throws Exception {
         return service.create(model);
     }
     @PutMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity update(@RequestBody ${CLASS_NAME} model) throws Exception {
+    public ResponseEntity update(@RequestBody ${CLASS_NAME}Model model) throws Exception {
         return service.update(model);
     }
     @DeleteMapping(\"/{id}\")
