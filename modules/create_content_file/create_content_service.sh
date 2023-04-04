@@ -16,7 +16,7 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   # Escreve o conteúdo da classe no arquivo
   echo "package com.$PROJECT_NAME.app.service;" > "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
-  echo "import com.$PROJECT_NAME.entity.${CLASS_NAME}Entity;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import com.$PROJECT_NAME.persistence.entity.${CLASS_NAME}Entity;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
   echo "@Service" >> "$SERVICE_PATH/$FILE_NAME"
   echo "public class ${CLASS_NAME}Service {" >> "$SERVICE_PATH/$FILE_NAME"
@@ -25,87 +25,67 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   echo "private ${CLASS_NAME}Repository ${CLASS_NAME,}Repository;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
   
-  echo "    public ResponseEntity getProduct(HttpServletRequest request, Long id) {
+  echo "    public ResponseEntity get${CLASS_NAME}(HttpServletRequest request, Long id) {
         try {
-            String token = request.getHeader("Authorization");
-            ProductEntity productEntity = productRepository.findByProductId(id);
-            LogFactory.productInfo(productEntity, "[GET] Product success ", "[GET] Product failure ");
-            if (TokenVerifier.tokenValidation(request)) {
-                token = token.substring(BEGIN_INDEX);
-                UserEntity userEntity = userRepository.findByUserToken(token);
-                return productEntity != null && userEntity.getUserToken().equals(token)
-                        ? ResponseEntity.ok().header("Content-Type", "application/json").body(ProductMapper.unmarshall(productEntity))
+            // Exemplo de implementacao
+            ProductEntity ${CLASS_NAME,}Entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(id);
+            // Implementacao aqui
+            return ${CLASS_NAME,}Entity != null
+                    ? ResponseEntity.ok().body(${CLASS_NAME}Mapper.unmarshall(${CLASS_NAME,}Entity))
+                    : ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }" >> "$SERVICE_PATH/$FILE_NAME"
+
+    echo "  public ResponseEntity<List<${CLASS_NAME}>> get${CLASS_NAME}List(HttpServletRequest request) {
+            try {
+                List<${CLASS_NAME}Entity> entities = ${CLASS_NAME,}Repository.findAll();
+                // Implementacao aqui
+                return entities != null
+                        ? ResponseEntity.ok().body(${CLASS_NAME}Mapper.unmarshall(entities))
                         : ResponseEntity.notFound().build();
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
-            return productEntity != null
-                    ? ResponseEntity.ok().body(ProductMapper.unmarshall(productEntity))
-                    : ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
-    echo "  public ResponseEntity<List<Product>> getProductList(HttpServletRequest request) {
-        try {
-            String token = request.getHeader("Authorization");
-            List<ProductEntity> entities = productRepository.findAll();
-            LogFactory.productInfo(entities, "[GET - List] Products success ", "[GET - List] Products failure ");
-
-            if (TokenVerifier.tokenValidation(request)) {
-                token = token.substring(BEGIN_INDEX);
-                UserEntity userEntity = userRepository.findByUserToken(token);
-                return !entities.isEmpty() && userEntity.getUserToken().equals(token)
-                        ? ResponseEntity.ok().header("Content-Type", "application/json").body(ProductMapper.unmarshall(entities))
+    echo "  public ResponseEntity create(${CLASS_NAME} model) {
+            try {
+                ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.save(${CLASS_NAME}Mapper.marshall(model));
+                // Implementacao aqui
+                return entity != null
+                        ? ResponseEntity.ok().header("Content-Type", "application/json").body(${CLASS_NAME}Mapper.unmarshall(entity))
                         : ResponseEntity.notFound().build();
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
-            return entities != null
-                    ? ResponseEntity.ok().body(ProductMapper.unmarshall(entities))
-                    : ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
-    echo "  public ResponseEntity createProduct(Product model) {
-        try {
-            ProductEntity entity = productRepository.save(ProductMapper.marshall(model));
-            LogFactory.productInfo(entity, "[POST] Products success ", "[POST] Products failure ");
-            return entity != null
-                    ? ResponseEntity.ok().header("Content-Type", "application/json").body(ProductMapper.unmarshall(entity))
-                    : ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    echo "  public ResponseEntity update(${CLASS_NAME} model) {
+            try {
+                ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(model.get${CLASS_NAME}Id());
+                // Implementacao aqui
+                ${CLASS_NAME,}Repository.save(entity);
+                return entity != null
+                        ? ResponseEntity.ok().header("Content-Type", "application/json").body(${CLASS_NAME}Mapper.unmarshall(entity))
+                        : ResponseEntity.notFound().build();
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
-    echo "  public ResponseEntity updateProduct(Product model) {
-        try {
-            ProductEntity entity = productRepository.findByProductId(model.getProductId());
-            entity.setProductName(model.getProductName());
-            entity.setProductDescription(model.getProductDescription());
-            entity.setProductPrice(model.getProductPrice());
-            productRepository.save(entity);
-            LogFactory.productInfo(entity, "[PATCH] Product updated ", "[PATCH] Product failure ");
-            return entity != null
-                    ? ResponseEntity.ok().header("Content-Type", "application/json").body(ProductMapper.unmarshall(entity))
-                    : ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }" >> "$SERVICE_PATH/$FILE_NAME"
-
-    echo "  public ResponseEntity deleteProduct(Long id) {
-        try {
-            ProductEntity entity = productRepository.findByProductId(id);
-            return productRepository.findById(id).map(record -> {
-                LogFactory.productInfo(entity, "[DELETE] Product deleted ", "[DELETE]Product failure ");
-                productRepository.deleteById(id);
-                return ResponseEntity.ok().header("Content-Type", "application/json").body(id);
-            }).orElse(ResponseEntity.notFound().build());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    echo "  public ResponseEntity delete(Long id) {
+            try {
+                ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(id);
+                return ${CLASS_NAME,}Repository.findById(id).map(record -> {
+                    ${CLASS_NAME,}Repository.deleteById(id);
+                    return ResponseEntity.ok().header("Content-Type", "application/json").body(id);
+                }).orElse(ResponseEntity.notFound().build());
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
     }" >> "$SERVICE_PATH/$FILE_NAME"
 
   echo "}" >> "$SERVICE_PATH/$FILE_NAME"
