@@ -12,7 +12,7 @@ echo "import org.springframework.boot.autoconfigure.domain.EntityScan;" >> "$CLA
 echo "" >> "$CLASS_MAN_PATH"
 echo "@SpringBootApplication" >> "$CLASS_MAN_PATH"
 echo "@EnableAutoConfiguration" >> "$CLASS_MAN_PATH"
-echo "public class Man {" >> "$CLASS_MAN_PATH"
+echo "public class ${PROJECT_NAME}Application {" >> "$CLASS_MAN_PATH"
 echo "    public static void main(String[] args) {" >> "$CLASS_MAN_PATH"
 echo "        SpringApplication.run(${PROJECT_NAME}Application.class, args);" >> "$CLASS_MAN_PATH"
 echo "    }" >> "$CLASS_MAN_PATH"

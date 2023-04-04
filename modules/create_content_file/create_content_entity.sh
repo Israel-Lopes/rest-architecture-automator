@@ -6,7 +6,7 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
   CLASS_FIELDS=$(echo "$DOMAIN_CLASS" | cut -d':' -f2)
   # Gerar classe de entidade
   echo "Gerando classe de entidade: $ENTITY/${CLASS_NAME}Entity.java" | sed 's/\//./g'
-  echo "package com.$PROJECT_NAME.app.percistence.entity;" >> "$ENTITY/${CLASS_NAME}Entity.java"
+  echo "package com.${PROJECT_NAME}.app.persistence.entity;" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "import javax.persistence.Entity;" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "import javax.persistence.GeneratedValue;" >> "$ENTITY/${CLASS_NAME}Entity.java"

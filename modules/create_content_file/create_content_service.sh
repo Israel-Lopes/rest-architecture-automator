@@ -16,9 +16,9 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   # Escreve o conteúdo da classe no arquivo
   echo "package com.$PROJECT_NAME.app.service;" > "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
-  echo "import com.$PROJECT_NAME.persistence.entity.${CLASS_NAME}Entity;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import com.$PROJECT_NAME.app.percistence.entity.${CLASS_NAME}Entity;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import com.$PROJECT_NAME.app.repository.${CLASS_NAME}Repository;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import com.${PROJECT_NAME}.app.service.model.${CLASS_NAME}Model;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import com.$PROJECT_NAME.web.mapper.${CLASS_NAME}Mapper;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import org.springframework.beans.factory.annotation.Autowired;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import org.springframework.http.HttpStatus;" >> "$SERVICE_PATH/$FILE_NAME"
@@ -26,7 +26,8 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   echo "import org.springframework.stereotype.Service;" >> "$SERVICE_PATH/$FILE_NAME"
 
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
-  echo "import javax.servlet.http.HttpServletRequest;"
+  echo "import javax.servlet.http.HttpServletRequest;" >> "$SERVICE_PATH/$FILE_NAME"
+  echo "import java.util.List;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
   echo "@Service" >> "$SERVICE_PATH/$FILE_NAME"
   echo "public class ${CLASS_NAME}Service {" >> "$SERVICE_PATH/$FILE_NAME"
