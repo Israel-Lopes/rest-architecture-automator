@@ -15,12 +15,10 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
   IFS=':' read -r CLASS_NAME classAttributes <<< "$DOMAIN_CLASSE"
   # Define o nome do arquivo da classe
   FILE_NAME="${CLASS_NAME}Service.java"
-  # Cria o arquivo da classe
-  touch $FILE_NAME
 
   # Escreve o conteúdo da classe no arquivo
   echo "package com.example.$PROJECT_NAME.service;" > "$SERVICE_PATH/$FILE_NAME"
-  echo "" >> "$FILE_NAME"
+  echo "" >> "$SERVICE_PATH/$FILE_NAME"
   echo "import com.example.$PROJECT_NAME.domain.$CLASS_NAME;" >> "$SERVICE_PATH/$FILE_NAME"
   echo "" >> "$SERVICE_PATH/$FILE_NAME"
   echo "public class ${CLASS_NAME}Service {" >> "$SERVICE_PATH/$FILE_NAME"
