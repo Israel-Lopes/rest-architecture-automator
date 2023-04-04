@@ -1,5 +1,7 @@
 # rest-architecture-automator
 
+# ![banner](img/banner.png)
+
 - `main`: diretório principal do projeto.
 - `java`: diretório para o código fonte em Java.
 - `com`: diretório raiz dos pacotes Java.
