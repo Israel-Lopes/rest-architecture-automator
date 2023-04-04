@@ -18,6 +18,9 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
   echo "import lombok.Data;" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "import lombok.NoArgsConstructor;" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
+  echo "import java.util.List;" >> "$ENTITY/${CLASS_NAME}Entity.java"
+
+  echo "" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "@Entity" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "@Table(name=\"$CLASS_NAME\")" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "@Data" >> "$ENTITY/${CLASS_NAME}Entity.java"

@@ -9,7 +9,7 @@ for CLASS in "${DOMAIN_CLASSES[@]}"; do
 
   echo "package com.$PROJECT_NAME.app.repository;" > "$REPOSITORY/${CLASS_NAME}Repository.java"
   echo "" >> "$REPOSITORY/${CLASS_NAME}Repository.java"
-  echo "import com.$PROJECT_NAME.app.percistence.entity.${CLASS_NAME}Entity;" >> "$REPOSITORY/${CLASS_NAME}Repository.java" | sed 's/\//./g'
+  echo "import com.$PROJECT_NAME.app.persistence.entity.${CLASS_NAME}Entity;" >> "$REPOSITORY/${CLASS_NAME}Repository.java" | sed 's/\//./g'
   echo "import org.springframework.data.jpa.repository.JpaRepository;" >> "$REPOSITORY/${CLASS_NAME}Repository.java" | sed 's/\//./g'
   echo "import org.springframework.stereotype.Repository;" >> "$REPOSITORY/${CLASS_NAME}Repository.java"
   echo "import org.springframework.data.jpa.repository.JpaRepository;"

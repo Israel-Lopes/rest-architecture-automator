@@ -13,10 +13,10 @@ for MAPPER_FILE in $MAPPER/*Mapper.java; do
   ENTITY_NAME="${MODEL_NAME}Entity"
   
   # Escreve o conteúdo no arquivo do mapper
-  echo "package com.$PROJECT_NAME.web.mapper;" | sed 's/\//./g' >> "$MAPPER_FILE"
+  echo "package com.$PROJECT_NAME.app.web.mapper;" | sed 's/\//./g' >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
-  echo "import com.$PROJECT_NAME.percistence.entity.$ENTITY_NAME;" | sed 's/\//./g' >> "$MAPPER_FILE"
-  echo "import com.$PROJECT_NAME.service.model.$MODEL_NAME;" | sed 's/\//./g' >> "$MAPPER_FILE"
+  echo "import com.$PROJECT_NAME.app.persistence.entity.$ENTITY_NAME;" | sed 's/\//./g' >> "$MAPPER_FILE"
+  echo "import com.$PROJECT_NAME.app.service.model.${MODEL_NAME}Model;" | sed 's/\//./g' >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
   echo "import java.util.List;" >> "$MAPPER_FILE"
   echo "import java.util.stream.Collectors;" >> "$MAPPER_FILE"
@@ -29,18 +29,18 @@ for MAPPER_FILE in $MAPPER/*Mapper.java; do
   echo "    private $MAPPER_NAME() { super(); }" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
 
-  echo "    public static List<$ENTITY_NAME> marshall(List<$MODEL_NAME> models) {" >> "$MAPPER_FILE"
+  echo "    public static List<$ENTITY_NAME> marshall(List<${MODEL_NAME}Model> models) {" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
   echo "        return models.stream().map($MAPPER_NAME::marshall).collect(Collectors.toList());" >> "$MAPPER_FILE"
   echo "    }" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
 
-  echo "    public static List<$MODEL_NAME> unmarshall(List<$ENTITY_NAME> entities) {" >> "$MAPPER_FILE"
+  echo "    public static List<${MODEL_NAME}Model> unmarshall(List<$ENTITY_NAME> entities) {" >> "$MAPPER_FILE"
   echo "        return entities.stream().map($MAPPER_NAME::unmarshall).collect(Collectors.toList());" >> "$MAPPER_FILE"
   echo "    }" >> "$MAPPER_FILE"
 
   echo "" >> "$MAPPER_FILE"
-  echo "    public static $ENTITY_NAME marshall($MODEL_NAME model) {" >> "$MAPPER_FILE"
+  echo "    public static ${ENTITY_NAME} marshall(${MODEL_NAME}Model model) {" >> "$MAPPER_FILE"
   echo "        return $ENTITY_NAME.builder()" >> "$MAPPER_FILE"
 
   # Escreve as propriedades do model no builder do entity
@@ -58,8 +58,8 @@ for MAPPER_FILE in $MAPPER/*Mapper.java; do
   echo "    }" >> "$MAPPER_FILE"
   echo "" >> "$MAPPER_FILE"
 
-  echo "    public static $MODEL_NAME unmarshall($ENTITY_NAME entity) {" >> "$MAPPER_FILE"
-  echo "        return $MODEL_NAME.builder()" >> "$MAPPER_FILE"
+  echo "    public static ${MODEL_NAME}Model unmarshall($ENTITY_NAME entity) {" >> "$MAPPER_FILE"
+  echo "        return ${MODEL_NAME}Model.builder()" >> "$MAPPER_FILE"
 
  # Escreve as propriedades do entity no builder do model
   for ENTITY_PROP in $(compgen -v "$ENTITY_NAME"_PROP_); do

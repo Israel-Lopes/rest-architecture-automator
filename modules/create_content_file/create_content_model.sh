@@ -6,7 +6,11 @@ for FILE in $MODEL/*.java; do
   echo "Implementando classe $FILE_NAME"
   sed -i 's/}$//g' "$FILE"
   echo "package com.${PROJECT_NAME}.app.service.model;" >> "$FILE"
+  echo "import lombok.Data;" >> "$FILE"
+  echo "import lombok.Builder;" >> "$FILE"
   echo "" >> "$FILE"
+  echo "@Data" >> "$FILE"
+  echo "@Builder" >> "$FILE"
   echo "public class $FILE_NAME {" >> "$FILE"
   for FIELD in $(grep -oP '^\s+\w+ \w+;' "$FILE"); do
     echo "$FIELD" | sed 's/;$//' >> "$FILE"
