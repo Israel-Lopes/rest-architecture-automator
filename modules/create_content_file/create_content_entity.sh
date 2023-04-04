@@ -113,5 +113,5 @@ for DOMAIN_CLASS in "${DOMAIN_CLASSES[@]}"; do
   done
   echo "      \"}\";" >> "$ENTITY/${CLASS_NAME}Entity.java"
   echo "  }" >> "$ENTITY/${CLASS_NAME}Entity.java"
-  echo "}" >> "$ENTITY/${CLASS_NAME}Entity.java"  # Adicionar o caractere de fechamento da classe
+  echo "}" >> "$ENTITY/${CLASS_NAME}Entity.java"
 done
