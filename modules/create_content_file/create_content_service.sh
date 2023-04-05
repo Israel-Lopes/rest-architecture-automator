@@ -76,7 +76,7 @@ for DOMAIN_CLASSE in "${DOMAIN_CLASSES[@]}"; do
 
     echo "  public ResponseEntity update(${CLASS_NAME}Model model) {
             try {
-                ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(model.get${CLASS_NAME}Id());
+                ${CLASS_NAME}Entity entity = ${CLASS_NAME,}Repository.findBy${CLASS_NAME}Id(model.getId());
                 // Implementacao aqui
                 ${CLASS_NAME,}Repository.save(entity);
                 return entity != null

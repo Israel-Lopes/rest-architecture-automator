@@ -20,27 +20,27 @@ _create_directory "$CONTROLLER" "$CONTROLLER_TEST"
 _create_directory "$MAPPER" "$MAPPER_TEST"
 _create_directory "$MVN_WRAPPER"
 
-# Carrega o modulo de criação das classes
+# Carrega e executa  o modulo de criação das classes
 source modules/create_classes.sh
-# Carrega o modulo de implementacao das Entitys
+# Carrega e executa  o modulo de implementacao das Entitys
 source modules/create_content_file/create_content_entity.sh
-# Carrega o modulo de implementacao das Models
+# Carrega e executa  o modulo de implementacao das Models
 source modules/create_content_file/create_content_model.sh
-# Carrega o modulo de implementacao das Repositorys
+# Carrega e executa  o modulo de implementacao das Repositorys
 source modules/create_content_file/create_content_repository.sh
-# Carrega o modulo de implementacao das Controllers
+# Carrega e executa  o modulo de implementacao das Controllers
 source modules/create_content_file/create_content_controller.sh
-# Carrega o modulo de implementacao das Mappers
+# Carrega e executa  o modulo de implementacao das Mappers
 source modules/create_content_file/create_content_mapper.sh
-# Carrega o modulo de implementacao das Services
+# Carrega e executa  o modulo de implementacao das Services
 source modules/create_content_file/create_content_service.sh
-# Carrega o modulo de implementacao da Man
+# Carrega e executa  o modulo de implementacao da Man
 source modules/create_content_file/create_content_man.sh
-# Carrega o modulo de implementacao do pom.xml
+# Carrega e executa  o modulo de implementacao do pom.xml
 source modules/create_content_file/create_content_pom_xml.sh
-# Carrega o modulo de implementacao do mvnw
+# Carrega e executa  o modulo de implementacao do mvnw
 source modules/create_content_file/create_content_mvnw.sh
-# Carrega o modulo de implementacao do mvnw.cmd
+# Carrega e executa o modulo de implementacao do mvnw.cmd
 source modules/create_content_file/create_content_mvnw_cmd.sh
 
 # Copia os arquivos estaticos no maven

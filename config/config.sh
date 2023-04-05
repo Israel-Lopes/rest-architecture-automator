@@ -9,11 +9,11 @@ PROJECT_NAME="ArquiteturaHexagonalEcommerce"
 
 # Classes do domínio
 DOMAIN_CLASSES=(
-  "Cart:productList=List<Product>,user=User" 
-  "Login:email=String,password=String" 
-  "Product:name=String,description=String,price=Double" 
-  "Registration:name=String,email=String,password=String" 
-  "User:name=String,email=String,password=String"
+  "Cart:id=Long,productList=List<Product>,user=User" 
+  "Login:id=Long,email=String,password=String" 
+  "Product:id=Long,name=String,description=String,price=Double" 
+  "Registration:id=Long,name=String,email=String,password=String" 
+  "User:id=Long,name=String,email=String,password=String"
 )
 
 # Descricao do projeto
