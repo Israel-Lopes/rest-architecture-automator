@@ -63,4 +63,4 @@ Para executar em modo interativo
 
 Executar fora da imagem
 
-``sudo docker run -v <diretorio_completo_onde_esta_rest.sh>:/app -w /app imagem-teste bash rest.sh``
+``sudo docker run -v <diretorio_completo_onde_esta_rest.sh>:/app -w /app nome_da_imagem bash rest.sh``
