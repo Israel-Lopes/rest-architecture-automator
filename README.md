@@ -44,3 +44,23 @@ Esta é a estrutura do projeto default e cada diretório possui sua respectiva d
 │                       │
 │                       └── mapper
 ```
+
+Instale buildx caso nao tenha
+
+``docker buildx install``
+
+Crie a imagem docker 
+
+``sudo docker buildx build -t nome_da_imagem:latest .``
+
+Executar container
+
+``sudo docker run -it -p 8080:8080 nome_da_imagem``
+
+Para executar em modo interativo
+
+``docker run -it <nome_da_imagem>``
+
+Executar fora da imagem
+
+``sudo docker run -v <diretorio_completo_onde_esta_rest.sh>:/app -w /app imagem-teste bash rest.sh``
